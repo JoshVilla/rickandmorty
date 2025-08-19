@@ -13,7 +13,6 @@ const CharacterPage = () => {
   const params = useParams();
   const router = useRouter();
   const { id } = params;
-
   const characterId =
     typeof id === "string" ? id : Array.isArray(id) ? id[0] : "";
 
@@ -27,10 +26,8 @@ const CharacterPage = () => {
     enabled: !!characterId,
   });
 
-  // --- Loading state ---
   if (isLoading) return <CharacterInfoSkeleton />;
 
-  // --- Error / Not Found ---
   if (isError || character.error) {
     throw new Error("Character not found");
   }
@@ -47,9 +44,9 @@ const CharacterPage = () => {
           <span>Go Back</span>
         </div>
 
-        <div className="flex h-[500px] flex-col lg:flex-row border border-gray-600 rounded-lg overflow-hidden">
+        <div className="flex flex-col lg:flex-row border border-gray-600 rounded-lg overflow-hidden">
           {/* Character Image + Info */}
-          <div className="flex-1 relative overflow-hidden h-64 md:h-64 lg:h-auto">
+          <div className="w-full lg:w-1/2 relative h-80 md:h-96 lg:h-auto">
             <Image
               src={character?.image ?? "/default.png"}
               alt={character?.name ?? "Unknown character"}
@@ -60,8 +57,8 @@ const CharacterPage = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
 
             {/* Character Info */}
-            <div className="absolute bottom-0 left-0 p-4">
-              <div className="space-x-2">
+            <div className="absolute bottom-0 left-0 p-4 w-full">
+              <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold text-white">
                   {character?.name}
                 </span>
@@ -71,9 +68,7 @@ const CharacterPage = () => {
               </div>
               <p className="text-sm text-gray-400">{character?.species}</p>
 
-              {/* Extra Info */}
-              <div className="mt-6 flex gap-6">
-                {/* Location */}
+              <div className="mt-6 flex justify-between">
                 <div className="flex flex-col items-center gap-1">
                   <LocateIcon size={16} />
                   <span className="text-xs text-gray-400 text-center">
@@ -82,8 +77,6 @@ const CharacterPage = () => {
                       : character?.location?.name}
                   </span>
                 </div>
-
-                {/* Origin */}
                 <div className="flex flex-col items-center gap-1">
                   <MapPin size={16} />
                   <span className="text-xs text-gray-400 text-center">
@@ -92,9 +85,7 @@ const CharacterPage = () => {
                       : character?.origin?.name}
                   </span>
                 </div>
-
-                {/* Episodes */}
-                <div className="flex-1 flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-1">
                   <Clapperboard size={16} />
                   <span className="text-xs text-gray-400 text-center">
                     {character?.episode?.length ?? 0} Episode/s
@@ -104,15 +95,13 @@ const CharacterPage = () => {
             </div>
           </div>
 
-          {/* Right: Episodes List */}
-          <div className="flex-1">
-            <div className="p-4">
-              <div className="text-2xl font-bold mb-4">List of Episodes</div>
-              <div className="overflow-y-auto max-h-96 space-y-4 custom-scrollbar p-2">
-                {character?.episode?.map((episode: string, index: number) => (
-                  <EpisodeItem key={index} urlEpisode={episode} />
-                ))}
-              </div>
+          {/* Episodes List */}
+          <div className="w-full lg:w-1/2 p-4">
+            <h2 className="text-2xl font-bold mb-4">List of Episodes</h2>
+            <div className="overflow-y-auto max-h-96 p-2 custom-scrollbar flex flex-col gap-4">
+              {character?.episode?.map((episode: string) => (
+                <EpisodeItem key={episode} urlEpisode={episode} />
+              ))}
             </div>
           </div>
         </div>
