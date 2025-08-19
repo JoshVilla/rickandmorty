@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Overview
+This is a Rick and Morty character browser built with Next.js 14+ (App Router), featuring character search, detailed character views, and favorites management. The application follows a client-side heavy approach with API integration to the Rick and Morty API.
 
-## Getting Started
+Tech Stack
+Frontend: Next.js 19, React, TypeScript, Tailwind CSS, React Query
+State Management: URL-driven state + React Query for caching & server state
+Backend/Service: REST API (Rick and Morty API)
+Routing: Next.js App Router (useNavigation)
+UI Components: Reusable components with Skeletons for loading states
 
-First, run the development server:
+Overall Architecture
+Component-driven structure: Each feature (Search, Pagination, CharacterCard, EpisodeItem) has its own folder/component.
+Data fetching: React Query handles caching, loading, and error states.
+URL-driven state: Search and page are reflected in the URL to allow deep linking and browser navigation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Trade-offs & Decisions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Search Implementation
+Current: Debounced search with 500ms delay
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+✅ Reduces API calls, smooth typing experience
+❌ Slight delay for very fast typers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Image Loading
+Current: Next.js Image component with lazy loading
 
-## Learn More
+✅ Automatic optimization and lazy loading
+❌ Requires image dimensions or fill (using fill everywhere)
 
-To learn more about Next.js, take a look at the following resources:
+Pagination
+Current: Traditional pagination with page numbers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+✅ Clear navigation, URL-based state
+❌ Not as smooth as infinite scroll
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Styling: Tailwind CSS
+Decision: Tailwind CSS with custom CSS for specific components
 
-## Deploy on Vercel
+✅ Pros: Fast development, consistent spacing/colors, small production bundle
+❌ Cons: HTML can become verbose, requires learning utility names
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Loading States
+Current: Skeleton components for loading
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Better perceived performance, maintains layout
+❌ Additional component maintenance overhead

@@ -6,16 +6,16 @@ import SearchCharacters from "@/components/SearchCharacters";
 import { searchCharacters } from "@/service/api";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import CharacterCardSkeleton from "@/components/ui/skeleton/CharacterCardSkeleton";
+import { Character } from "@/utils/types";
 
 export default function Home() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const initialSearch = "";
   const initialStatus = "";
 
-  const [page, setPage] = useState(Number(searchParams.get("page") || 1));
+  const [page, setPage] = useState(1);
   const [search, setSearch] = useState(initialSearch);
   const [status, setStatus] = useState<"" | "alive" | "dead" | "unknown">(
     initialStatus
@@ -45,7 +45,7 @@ export default function Home() {
       return <p className="text-red-400">No results found</p>;
     }
 
-    return characterData.map((item: any) => (
+    return characterData.map((item: Character) => (
       <ListItems key={item.id} data={item} />
     ));
   };

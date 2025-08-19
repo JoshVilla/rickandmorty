@@ -1,13 +1,14 @@
 "use client";
 import ListItems from "@/components/CharacterItem";
 import { getFavorites } from "@/utils/helpers";
+import { Character } from "@/utils/types";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const Favorites = () => {
   const router = useRouter();
-  const [favorites, setFavorites] = useState<any[]>([]);
+  const [favorites, setFavorites] = useState<Character[]>([]);
   const [visibleCount, setVisibleCount] = useState(10); // show first 10 initially
 
   // Load favorites on the client
