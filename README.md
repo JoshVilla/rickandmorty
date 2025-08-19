@@ -89,3 +89,33 @@ npm run dev
 ```browser
 http://localhost:3000
 ````
+
+This project uses **Cypress** for end-to-end testing.
+
+### Install Cypress
+
+npm install cypress --save-dev
+
+# or
+
+yarn add cypress --dev
+
+### Open Cypress Test Runner
+
+npm run cypress
+
+### Using Cypress Application
+
+**Choose Testing**  
+Choose E2E Testing
+
+**Choose Browser**  
+Choose any browser (Chrome is a recommend)
+
+**Test File List**  
+On the left, you’ll see a list of all your test files (usually under `cypress/e2e`).
+
+**Run a Test**  
+Click a test file to open it in a browser.  
+Cypress will automatically run all the tests in that file.  
+You can watch tests execute step by step in real-time.

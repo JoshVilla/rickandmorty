@@ -57,10 +57,11 @@ export default function Home() {
     <div className="p-4 w-full">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <div className="text-2xl font-bold">
+        <div className="text-2xl font-bold" cy-data="title-page">
           Welcome to the Rick and Morty API
         </div>
         <button
+          cy-data="favorites-button"
           className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition cursor-pointer"
           onClick={() => router.push("/favorites")}
         >

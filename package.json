@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5000",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 5000",
+    "lint": "next lint",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.85.3",
@@ -20,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^14.5.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

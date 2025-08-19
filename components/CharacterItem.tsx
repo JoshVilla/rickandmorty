@@ -31,7 +31,10 @@ const CharacterItem = ({ data }: Props) => {
   };
 
   return (
-    <div className="w-64 pb-4 shadow-md border-2 border-gray-600 overflow-hidden">
+    <div
+      className="w-64 pb-4 shadow-md border-2 border-gray-600 overflow-hidden"
+      cy-data={`character-item-${data.id}`}
+    >
       <div className="h-44 w-full relative  overflow-hidden ">
         <Image
           src={data.image ?? "/default.png"}
