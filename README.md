@@ -87,7 +87,7 @@ npm run dev
 
 3. Open the app in the browser:
 ```browser
-http://localhost:3000
+http://localhost:5000
 ````
 
 This project uses **Cypress** for end-to-end testing.
