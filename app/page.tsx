@@ -35,16 +35,19 @@ export default function Home() {
   };
 
   const renderContent = () => {
+    // --- Loading state ---
     if (isLoading || isFetching) {
       return Array.from({ length: 10 }, (_, index) => (
         <CharacterCardSkeleton key={index} />
       ));
     }
 
+    // --- Not Results ---
     if (isError) {
       return <p className="text-red-400">No results found</p>;
     }
 
+    // render data
     return characterData.map((item: Character) => (
       <ListItems key={item.id} data={item} />
     ));

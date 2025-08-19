@@ -56,7 +56,7 @@ const SearchCharacters = ({ onSearch, isSearching }: Props) => {
           Searching...
         </div>
       )}
-      {/* Reset button only, search now auto */}
+
       <div className="flex space-x-3">
         <button
           onClick={handleReset}
