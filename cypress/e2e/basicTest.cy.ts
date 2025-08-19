@@ -15,8 +15,7 @@ describe("template spec", () => {
   });
 
   it("should search character", () => {
-    cy.get("input").type("Rick Sanchez");
-    cy.wait(1000);
+    cy.get("input").type("Rick");
     cy.get("[cy-data='character-item-1']").should("be.visible");
   });
 
