@@ -34,7 +34,7 @@ const CharacterItem = ({ data }: Props) => {
     <div className="w-64 pb-4 shadow-md border-2 border-gray-600 overflow-hidden">
       <div className="h-44 w-full relative  overflow-hidden ">
         <Image
-          src={data.image}
+          src={data.image ?? "/default.png"}
           alt={data.name}
           fill
           className="object-cover hover:scale-105 transition-all cursor-pointer"
